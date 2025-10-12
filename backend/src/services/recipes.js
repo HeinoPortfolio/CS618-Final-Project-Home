@@ -53,6 +53,6 @@ export async function updateRecipe(
 }
 
 // Delete a post given a recipe ID ============================================
-export async function deleteRecipe(userId, recipeId) {
+export async function deleteRecipe(recipeId) {
   return await Recipe.deleteOne({ _id: recipeId })
 }

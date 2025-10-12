@@ -72,7 +72,7 @@ export function recipesRoutes(app) {
   }) // end update post
 
   // Delete a recipe by recipe ID ==============================================
-  app.delete('/api/v1/posts/:id', async (req, res) => {
+  app.delete('/api/v1/recipes/:id', async (req, res) => {
     try {
       const { deletedCount } = await deleteRecipe(req.params.id)
       if (deletedCount === 0) return res.sendStatus(404)
