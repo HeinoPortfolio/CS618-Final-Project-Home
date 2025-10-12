@@ -1,7 +1,11 @@
-//import { Recipe } from './components/Recipe.jsx'
+// import { Recipe } from './components/Recipe.jsx'
 import { RecipeList } from './components/RecipeList.jsx'
+import { CreateRecipe } from './components/CreateRecipe.jsx'
+import { RecipeFilter } from './components/RecipeFilter.jsx'
+import { RecipeSorting } from './components/RecipeSorting.jsx'
 
 // Create some test recipes =============================================
+
 const recipes = [
   {
     title: 'This is a test recipe title',
@@ -17,8 +21,23 @@ const recipes = [
   },
 ]
 
+// Create the frontend of the application =====================================
 function App() {
-  return <RecipeList recipes={recipes} />
+  //return <RecipeList recipes={recipes} />
+  //return <CreateRecipe />
+  return (
+    <div style={{ padding: 8 }}>
+      <CreateRecipe />
+      <br />
+      <hr />
+      <b>Filter by:</b>
+      <RecipeFilter field='author' />
+      <br />
+      <RecipeSorting fields={['createdAt', 'updatedAt']} />
+      <hr />
+      <RecipeList recipes={recipes} />
+    </div>
+  )
 }
 
 export default App
