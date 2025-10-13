@@ -28,9 +28,10 @@ export function Header() {
   return (
     <div>
       <h1>Welcome To The Recipe Blog! </h1>
-      <br />
       <Link to='/login'> Login Here </Link> |
       <Link to='/signup'> Sign Up Here</Link>
+      <br />
+      <br />
     </div>
   )
 }
