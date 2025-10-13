@@ -1,29 +1,36 @@
+import { login } from '../api/users.js'
+import { useAuth } from '../contexts/AuthContext.jsx'
+import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import { useNavigate, Link } from 'react-router-dom'
-import { signup } from '../api/users'
 
-export function Signup() {
+export function Login() {
+  // Login states ============================================================
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
+  const [, setToken] = useAuth()
 
-  const signupMutation = useMutation({
-    mutationFn: () => signup({ username, password }),
-    onSuccess: () => navigate('/login'),
-    onError: () => alert('Failed to signup!'),
+  // Login mutation ===========================================================
+  const loginMutation = useMutation({
+    mutationFn: () => login({ username, password }),
+    onSuccess: (data) => {
+      setToken(data.token)
+      navigate('/')
+    },
+    onError: () => alert('Failed to login!'),
   })
 
+  // Login function handler ===================================================
   const handleSubmit = (e) => {
     e.preventDefault()
-    signupMutation.mutate()
+    loginMutation.mutate()
   }
-
-  // Signup form ==============================================================
+  // Login form =================================================================
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Welcome to the Signup Page</h1>
+      <h1>Welcome to the Login Page</h1>
       <Link to='/'>Back to main page</Link>
       <hr />
       <br />
@@ -51,8 +58,8 @@ export function Signup() {
       <br />
       <input
         type='submit'
-        value={signupMutation.isPending ? 'Signing up...' : 'Sign Up'}
-        disabled={!username || !password || signupMutation.isPending}
+        value={loginMutation.isPending ? 'Logging in...' : 'Click To Log In'}
+        disabled={!username || !password || loginMutation.isPending}
       />
     </form>
   )
