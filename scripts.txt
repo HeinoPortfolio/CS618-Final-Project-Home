@@ -1,0 +1,5 @@
+// Test authenticated routes ==================================================
+// Will use CURL to test the authenticated routes==============================
+curl http://localhost:3000/api/v1/recipes
+
+curl -X POST http://localhost:3000/api/v1/user/login -H "Content-Type: application/json" -d '{"username": "mheino", "password": "archie" }'
