@@ -27,7 +27,7 @@ export async function loginUser({ username, password }) {
   })
   return token
 } // end login user
-/*
+
 // Get user information by ID service function ================================
 export async function getUserInfoById(userId) {
   try {
@@ -38,4 +38,3 @@ export async function getUserInfoById(userId) {
     return { username: userId }
   }
 } // end userinfobyid
- */

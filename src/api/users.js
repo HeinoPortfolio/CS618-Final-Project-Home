@@ -23,7 +23,7 @@ export const login = async ({ username, password }) => {
 
   return await res.json()
 }
-/*
+
 // API function to get the user info ==========================================
 export const getUserInfo = async (id) => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/users/${id}`, {
@@ -32,6 +32,4 @@ export const getUserInfo = async (id) => {
   })
 
   return await res.json()
-  
 }
-*/
