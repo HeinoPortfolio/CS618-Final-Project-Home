@@ -1,0 +1,5 @@
+General Notes:
+
+-- To run the frontend use:                     npm run dev
+-- To run the backend use:                      npm start 
+-- To start the backend in development mode:    npm run dev
