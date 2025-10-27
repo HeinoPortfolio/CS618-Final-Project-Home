@@ -1,7 +1,13 @@
 General Notes:
+-- "main.jsx" was renamed to "entry-client.jsx"
 
 -- To run the frontend use:                     npm run dev
 -- To run the backend use:                      npm start 
 -- To start the backend in development mode:    npm run dev
+-- To start the distribution can use:           serve dist
+
 
 ** There are now two ways to start the backend as stated above. **
+
+-- Routes/pages will be handled in the src/routes.jsx file NOT under the App.jsx 
+file in previous modules
