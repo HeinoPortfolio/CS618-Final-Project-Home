@@ -5,6 +5,8 @@ General Notes:
 -- To run the backend use:                      npm start 
 -- To start the backend in development mode:    npm run dev
 -- To start the distribution can use:           serve dist
+-- To build a production server use:            npm run build
+-- To run a production server use:              npm start
 
 
 ** There are now two ways to start the backend as stated above. **

@@ -7,7 +7,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-/*
+
+// Create the production server ===============================================
 async function createProdServer() {
   const app = express()
 
@@ -36,8 +37,9 @@ async function createProdServer() {
     }
   })
   return app
-}*/
+}
 
+// Create the development serever =============================================
 async function createDevServer() {
   const app = express()
   const vite = await (
@@ -70,7 +72,7 @@ async function createDevServer() {
 
   return app
 }
-/*
+
 if (process.env.NODE_ENV === 'production') {
   const app = await createProdServer()
   app.listen(process.env.PORT, () =>
@@ -78,9 +80,11 @@ if (process.env.NODE_ENV === 'production') {
       `ssr production server running on http://localhost:${process.env.PORT}`,
     ),
   )
-} else {*/
-const app = await createDevServer()
-app.listen(process.env.PORT, () =>
-  console.log(`ssr dev server running on http://localhost:${process.env.PORT}`),
-)
-//}
+} else {
+  const app = await createDevServer()
+  app.listen(process.env.PORT, () =>
+    console.log(
+      `ssr dev server running on http://localhost:${process.env.PORT}`,
+    ),
+  )
+}
