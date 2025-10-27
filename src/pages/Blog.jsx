@@ -5,7 +5,6 @@ import { RecipeSorting } from '../components/RecipeSorting.jsx'
 import { useQuery } from '@tanstack/react-query'
 import { getRecipes } from '../api/recipes.js'
 import { useState } from 'react'
-
 import { Header } from '../components/Header.jsx'
 
 // Create the frontend of the application =====================================
@@ -49,5 +48,3 @@ export function Blog() {
     </div>
   )
 }
-
-export default Blog
