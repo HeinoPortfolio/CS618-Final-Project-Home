@@ -9,7 +9,7 @@ export const getRecipes = async (queryParams) => {
   return await res.json()
 }
 
-// API function tp create recipes in the database =============================
+// API function to create recipes in the database =============================
 export const createRecipe = async (token, recipe) => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/recipes`, {
     method: 'POST',
