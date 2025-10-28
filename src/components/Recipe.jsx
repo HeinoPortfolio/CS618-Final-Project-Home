@@ -33,7 +33,11 @@ export function Recipe({
           </div>
         </Link>
       )}
-      {fullPost && <div>{ingredientList}</div>}
+      {fullPost && (
+        <div style={{ 'font-size': '18px' }}>
+          <pre>{ingredientList}</pre>
+        </div>
+      )}
       {author && (
         <em>
           {' '}
