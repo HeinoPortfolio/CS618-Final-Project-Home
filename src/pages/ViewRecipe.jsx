@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useQuery } from '@tanstack/react-query'
 //import { Helmet } from 'react-helmet-async'
@@ -6,8 +6,16 @@ import { Header } from '../components/Header.jsx'
 import { Recipe } from '../components/Recipe.jsx'
 import { getRecipeById } from '../api/recipes.js'
 //import { getUserInfo } from '../api/users.js'
+import { useState } from 'react'
 
 export function ViewRecipe({ recipeId }) {
+  // Button states ===============================
+  const [likeText, setButtonText] = useState('Click Here To Like')
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false)
+  const [textFieldValue, setTextFieldValue] = useState('')
+
+  const navigate = useNavigate()
+
   // Query function =========
   const recipeQuery = useQuery({
     queryKey: ['recipe', recipeId],
@@ -16,6 +24,22 @@ export function ViewRecipe({ recipeId }) {
 
   // Save the recipe data that is queried =========
   const recipe = recipeQuery.data
+
+  // Function to handle the button click ===========
+  const handleLikeClick = () => {
+    setButtonText('Recipe Liked!')
+
+    // Show information to the user ==
+    setTextFieldValue('Returning to main page after two seconds.')
+
+    // Disable the button after click
+    setIsButtonDisabled(true)
+
+    // Return back to the mainpage
+    setTimeout(() => {
+      navigate('/')
+    }, 2000)
+  }
 
   // Form for displaring the data =================
   return (
@@ -31,7 +55,17 @@ export function ViewRecipe({ recipeId }) {
       ) : (
         `Recipe with id${recipeId} not found!`
       )}
-      <button type='button'> Click Here To Like </button>
+
+      <button onClick={handleLikeClick} disabled={isButtonDisabled}>
+        {likeText}
+      </button>
+      <br />
+      <input
+        type='text'
+        value={textFieldValue}
+        style={{ width: 300, height: 10 }}
+        readOnly
+      />
     </div>
   )
 }
