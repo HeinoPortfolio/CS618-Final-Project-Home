@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import { User } from './User.jsx'
-
 import { Link } from 'react-router-dom'
+
+import slug from 'slug'
 
 // Recipe component ===========================================================
 export function Recipe({
@@ -17,7 +18,7 @@ export function Recipe({
       {fullPost ? (
         <h3>{title}</h3>
       ) : (
-        <Link to={`/recipes/${_id}`}>
+        <Link to={`/recipes/${_id}/${slug(title)}`}>
           <h3> {title} </h3>
           <div style={{ 'font-size': '18px' }}>
             <pre>{ingredientList}</pre>

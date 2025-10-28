@@ -4,9 +4,7 @@ import { Login } from './pages/Login.jsx'
 import { useLoaderData } from 'react-router-dom'
 import { getRecipeById, getRecipes } from './api/recipes.js'
 import { getUserInfo } from './api/users.js'
-
 import { ViewRecipe } from './pages/ViewRecipe.jsx'
-
 import {
   QueryClient,
   dehydrate,
@@ -55,7 +53,7 @@ export const routes = [
     element: <Login />,
   },
   {
-    path: '/recipes/:recipeId',
+    path: '/recipes/:recipeId/:slug?',
     loader: async ({ params }) => {
       const recipeId = params.recipeId
       const queryClient = new QueryClient()
