@@ -6,6 +6,9 @@ import { useQuery } from '@tanstack/react-query'
 import { getRecipes } from '../api/recipes.js'
 import { useState } from 'react'
 import { Header } from '../components/Header.jsx'
+import { Helmet } from 'react-helmet-async'
+
+//import { Helmet } from 'react-helmet-async'
 
 // Create the frontend of the application =====================================
 export function Blog() {
@@ -25,6 +28,9 @@ export function Blog() {
 
   return (
     <div style={{ padding: 8 }}>
+      <Helmet>
+        <title>The Recipe Blog</title>
+      </Helmet>
       <Header />
       <CreateRecipe />
       <br />
