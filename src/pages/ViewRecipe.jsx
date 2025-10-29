@@ -46,7 +46,7 @@ export function ViewRecipe({ recipeId }) {
     <div style={{ padding: 10 }}>
       {recipe.title && (
         <Helmet>
-          <title>{recipe.title} | This Is The Recipe Blog </title>
+          <title>{recipe.title} </title>
         </Helmet>
       )}
       <Header />

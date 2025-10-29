@@ -8,6 +8,9 @@ General Notes:
 -- To build a production server use:            npm run build
 -- To run a production server use:              npm start
 
+URLS:
+-- Frontend:        FRONTEND_URL="http://localhost:5173"                and port    PORT=5173
+-- Backend:         VITE_BACKEND_URL="http://localhost:3000/api/v1"     and port    PORT=3000
 
 ** There are now two ways to start the backend as stated above. **
 

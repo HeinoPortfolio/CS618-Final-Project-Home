@@ -20,7 +20,7 @@ export function Recipe({
       ) : (
         <Link to={`/recipes/${_id}/${slug(title)}`}>
           <h3> {title} </h3>
-          <div style={{ 'font-size': '18px' }}>
+          <div style={{ fontSize: '18px' }}>
             <pre>{ingredientList}</pre>
           </div>
           <div>
@@ -34,7 +34,7 @@ export function Recipe({
         </Link>
       )}
       {fullPost && (
-        <div style={{ 'font-size': '18px' }}>
+        <div style={{ fontSize: '18px' }}>
           <pre>{ingredientList}</pre>
         </div>
       )}
