@@ -64,7 +64,7 @@ export function Recipe({
 } // end Recipe
 
 Recipe.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   ingredientList: PropTypes.string,
   author: PropTypes.string,
   imageURL: PropTypes.string,
