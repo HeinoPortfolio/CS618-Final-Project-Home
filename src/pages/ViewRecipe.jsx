@@ -1,18 +1,40 @@
 import { Link, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { Header } from '../components/Header.jsx'
 import { Recipe } from '../components/Recipe.jsx'
 import { getRecipeById } from '../api/recipes.js'
 //import { getUserInfo } from '../api/users.js'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { recipeTrackEvent } from '../api/events.js'
 
 export function ViewRecipe({ recipeId }) {
   // Button states ===============================
   const [likeText, setButtonText] = useState('Click Here To Like')
   const [isButtonDisabled, setIsButtonDisabled] = useState(false)
   const [textFieldValue, setTextFieldValue] = useState('')
+
+  // Session states ========================================
+  const [session, setSession] = useState()
+
+  const trackEventMutation = useMutation({
+    mutationFn: (action) => recipeTrackEvent({ recipeId, action, session }),
+    onSuccess: (data) => setSession(data?.session),
+  })
+
+  // Define a hook to handle page view =================
+  useEffect(() => {
+    let timeout = setTimeout(() => {
+      trackEventMutation.mutate('startview')
+      timeout = null
+    }, 1000)
+
+    return () => {
+      if (timeout) clearTimeout(timeout)
+      else trackEventMutation.mutate('endview')
+    }
+  }, [])
 
   const navigate = useNavigate()
 
