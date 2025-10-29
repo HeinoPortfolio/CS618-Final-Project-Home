@@ -8,7 +8,7 @@ export function eventRoutes(app) {
       const { recipeId, session, action } = req.body
       const post = await getRecipeById(recipeId)
 
-      if (post === null) return res.status(440).end()
+      if (post === null) return res.status(400).end()
 
       const event = await trackEvent({ recipeId, session, action })
 
