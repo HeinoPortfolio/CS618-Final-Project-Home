@@ -5,6 +5,8 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import { userRoutes } from './routes/users.js'
 
+import { eventRoutes } from './routes/events.js'
+
 const app = express()
 app.use(bodyParser.json())
 app.use(cors())
@@ -12,8 +14,11 @@ app.use(cors())
 // Recipe routes ==============================================================
 recipesRoutes(app)
 
-// User route =================================================================
+// User routes ================================================================
 userRoutes(app)
+
+// Event routes ===============================================================
+eventRoutes(app)
 
 app.get('/', (req, res) => {
   res.send('Hello from Express Live!  Using Nodemon!!')
