@@ -12,6 +12,12 @@ URLS:
 -- Frontend:        FRONTEND_URL="http://localhost:5173"                and port    PORT=5173
 -- Backend:         VITE_BACKEND_URL="http://localhost:3000/api/v1"     and port    PORT=3000
 
+==== Database in "env" backend folder:
+--Testing:
+----- Backend:         DATABASE_URL=mongodb://localhost:27017/recipes-blog-simulated
+--Dev and production:
+----- Backend:         DATABASE_URL=mongodb://localhost:27017/recipes-blog
+
 ** There are now two ways to start the backend as stated above. **
 
 -- Routes/pages will be handled in the src/routes.jsx file NOT under the App.jsx 
