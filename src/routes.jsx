@@ -11,6 +11,8 @@ import {
   HydrationBoundary,
 } from '@tanstack/react-query'
 
+import { ViewRecipeStats } from './pages/ViewRecipeStats.jsx'
+
 export const routes = [
   {
     path: '/',
@@ -52,6 +54,8 @@ export const routes = [
     path: '/login',
     element: <Login />,
   },
+  // Recipe stats path ====
+  { path: '/ViewRecipeStats', element: <ViewRecipeStats /> },
   {
     path: '/recipes/:recipeId/:slug?',
     loader: async ({ params }) => {

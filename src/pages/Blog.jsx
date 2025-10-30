@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { Header } from '../components/Header.jsx'
 import { Helmet } from 'react-helmet-async'
 
-//import { Helmet } from 'react-helmet-async'
+import { useNavigate } from 'react-router-dom'
 
 // Create the frontend of the application =====================================
 export function Blog() {
@@ -16,6 +16,18 @@ export function Blog() {
   const [author, setAuthor] = useState('')
   const [sortBy, setSortBy] = useState('createdAt')
   const [sortOrder, setSortOrder] = useState('descending')
+
+  // Button states ============================================================
+  const [likeStatText] = useState('Click Here To View Recipe Like Statistics')
+
+  // Create a navigate to page
+  const navigate = useNavigate()
+
+  // Function to handle the button click ===========
+  const handleLikeClick = () => {
+    // Go to the recipe statistics page
+    navigate('/ViewRecipeStats')
+  }
 
   // Create the recipes query =================================================
   const recipesQuery = useQuery({
@@ -49,6 +61,10 @@ export function Blog() {
         orderValue={sortOrder}
         onOrderChange={(orderValue) => setSortOrder(orderValue)}
       />
+      <br />
+      <br />
+      <button onClick={handleLikeClick}> {likeStatText}</button>
+      <br />
       <hr />
       <RecipeList recipes={recipes} />
     </div>
