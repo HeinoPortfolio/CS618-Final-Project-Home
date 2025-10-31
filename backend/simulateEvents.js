@@ -12,9 +12,9 @@ dotenv.config()
 const simulationStart = Date.now() - 1000 * 60 * 60 * 24 * 30
 const simulationEnd = Date.now()
 
-const simulatedUsers = 5
-const simulatedPosts = 10
-const simulatedViews = 1000
+const simulatedUsers = 3
+const simulatedPosts = 3
+const simulatedViews = 5
 
 async function simulateEvents() {
   const connection = await initDatabase()

@@ -2,6 +2,7 @@
 
 use('recipes-blog-simulated')
 
+const top_number = 5
 // Aggregate function to get total number of view of the recipes ==============
 db.getCollection('events').aggregate([
   {
@@ -11,7 +12,31 @@ db.getCollection('events').aggregate([
   {
     $group: {
       _id: '$recipe',
-      views: { $count: {} },
+      totalLikes: { $count: {} },
     },
+  },
+  {
+    $sort: { totalLikes: -1 },
+  },
+  {
+    $lookup: {
+      from: 'recipes',
+      localField: '_id',
+      foreignField: '_id',
+      as: 'recipeInfo',
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      recipeId: '$_id',
+      title: '$recipeInfo.title',
+      author: '$recipeInfo.author',
+      ingredientList: '$recipeInfo.ingredientList',
+      Likes: '$totalLikes',
+    },
+  },
+  {
+    $limit: top_number,
   },
 ])
