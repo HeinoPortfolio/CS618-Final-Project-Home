@@ -33,6 +33,7 @@ db.getCollection('events').aggregate([
       title: '$recipeInfo.title',
       author: '$recipeInfo.author',
       ingredientList: '$recipeInfo.ingredientList',
+      imageURL: '$recipeInfo.imageURL',
       Likes: '$totalLikes',
     },
   },

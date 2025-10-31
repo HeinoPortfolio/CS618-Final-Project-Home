@@ -42,6 +42,8 @@ async function simulateEvents() {
         return await createRecipe(randomUser._id, {
           title: `Test Post ${p}`,
           ingredientList: `This is a test post ${p}`,
+          imageURL:
+            'https://github.com/HeinoPortfolio/images/blob/main/fried-chicken.jpg?raw=false',
         })
       }),
   )
