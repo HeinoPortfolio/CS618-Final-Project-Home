@@ -26,13 +26,13 @@ export function ViewRecipe({ recipeId }) {
   // Define a hook to handle page view =================
   useEffect(() => {
     let timeout = setTimeout(() => {
-      trackEventMutation.mutate('startview')
+      trackEventMutation.mutate('startView')
       timeout = null
     }, 1000)
 
     return () => {
       if (timeout) clearTimeout(timeout)
-      else trackEventMutation.mutate('endview')
+      else trackEventMutation.mutate('endView')
     }
   }, [])
 
