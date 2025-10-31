@@ -66,7 +66,18 @@ export function Blog() {
       <button onClick={handleLikeClick}> {likeStatText}</button>
       <br />
       <hr />
-      <RecipeList recipes={recipes} />
+      <div
+        style={{
+          maxHeight: '600px',
+          maxWidth: '800px',
+          overflowY: 'scroll',
+          overflowX: 'scroll',
+          border: '3px solid #ccc',
+          padding: '50px',
+        }}
+      >
+        <RecipeList recipes={recipes} />
+      </div>
     </div>
   )
 }

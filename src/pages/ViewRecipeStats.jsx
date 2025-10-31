@@ -6,11 +6,22 @@ import { useState } from 'react'
 export function ViewRecipeStats() {
   const recipesStat = [
     {
+      recipeId: 3,
+      title: 'Post 4',
+      author: 'Ava',
+      ingredientList: 'Yet Another Post3 ',
+      totalLikes: 2,
+      imageURL:
+        'https://github.com/HeinoPortfolio/images/blob/main/peach-cobbler.jpg?raw=false',
+    },
+    {
       recipeId: 2,
       title: 'Post 1',
       author: 'Dave',
       ingredientList: 'Some Post 2\nnewline',
       totalLikes: 121,
+      imageURL:
+        'https://github.com/HeinoPortfolio/images/blob/main/fried-chicken.jpg?raw=false',
     },
     {
       recipeId: 1,
@@ -25,13 +36,6 @@ export function ViewRecipeStats() {
       author: 'Matt',
       ingredientList: 'Another Post',
       totalLikes: 5,
-    },
-    {
-      recipeId: 3,
-      title: 'Post 4',
-      author: 'Ava',
-      ingredientList: 'Yet Another Post3 ',
-      totalLikes: 2,
     },
   ]
 
