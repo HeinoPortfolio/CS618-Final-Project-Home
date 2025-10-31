@@ -12,9 +12,9 @@ dotenv.config()
 const simulationStart = Date.now() - 1000 * 60 * 60 * 24 * 30
 const simulationEnd = Date.now()
 
-const simulatedUsers = 2
-const simulatedPosts = 3
-const simulatedViews = 10
+const simulatedUsers = 5
+const simulatedPosts = 10
+const simulatedViews = 1000
 
 async function simulateEvents() {
   const connection = await initDatabase()
@@ -41,7 +41,7 @@ async function simulateEvents() {
           createdUsers[Math.floor(Math.random() * simulatedUsers)]
         return await createRecipe(randomUser._id, {
           title: `Test Post ${p}`,
-          contents: `This is a test post ${p}`,
+          ingredientList: `This is a test post ${p}`,
         })
       }),
   )
@@ -62,7 +62,7 @@ async function simulateEvents() {
         // Start of event ================================
         const event = await trackEvent({
           recipeId: randomRecipe._id,
-          action: 'startview',
+          action: 'startView',
           date: new Date(sessionStart),
         })
         await trackEvent({
