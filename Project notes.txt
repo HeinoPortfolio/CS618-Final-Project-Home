@@ -22,3 +22,8 @@ URLS:
 
 -- Routes/pages will be handled in the src/routes.jsx file NOT under the App.jsx 
 file in previous modules
+
+Playground Files:
+-- files to be used in MongoDB Playground need to have the following extension: 
+------  
+-- These files will be found in the playground founder found in the backend.
