@@ -132,8 +132,12 @@ export async function getLikes() {
         author: '$recipeInfo.author',
         ingredientList: '$recipeInfo.ingredientList',
         imageURL: '$recipeInfo.imageURL',
-        Likes: '$totalLikes',
+        totalLikes: '$totalLikes',
       },
     },
+    { $unwind: '$title' },
+    { $unwind: '$ingredientList' },
+    { $unwind: '$author' },
+    { $unwind: '$imageURL' },
   ])
 }

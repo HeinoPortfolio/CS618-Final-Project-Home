@@ -37,6 +37,10 @@ db.getCollection('events').aggregate([
       Likes: '$totalLikes',
     },
   },
+  { $unwind: '$title' },
+  { $unwind: '$ingredientList' },
+  { $unwind: '$author' },
+  { $unwind: '$imageURL' },
   {
     $limit: top_number,
   },
