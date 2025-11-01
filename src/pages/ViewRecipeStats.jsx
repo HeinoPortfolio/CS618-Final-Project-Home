@@ -3,8 +3,12 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
+import { getLikesInfo } from '../api/events.js'
+import { useQuery } from '@tanstack/react-query'
+import { User } from '../components/User.jsx'
+
 export function ViewRecipeStats() {
-  const recipesStat = [
+  /*const recipesStat = [
     {
       recipeId: 3,
       title: 'Post 4',
@@ -38,12 +42,21 @@ export function ViewRecipeStats() {
       totalLikes: 5,
     },
   ]
+    */
 
   // Remove bullets from posts ====================
   const listStyle = {
     listStyleType: 'none',
   }
 
+  const recipeInfoQuery = useQuery({
+    queryKey: ['recipes'],
+    queryFn: () => getLikesInfo(),
+  })
+
+  const recipesStat = recipeInfoQuery.data ?? []
+
+  // States for the sorting ===================================================
   const [recipes, setPosts] = useState(recipesStat)
 
   const sortAscending = () => {
@@ -60,6 +73,7 @@ export function ViewRecipeStats() {
     <div
       style={{
         padding: 8,
+        fontSize: 22,
       }}
     >
       <Helmet>
@@ -73,13 +87,13 @@ export function ViewRecipeStats() {
       <hr />
       <h1>The Ranked Recipe List </h1>
       <h2>Sort The Recipes By Number Of Likes</h2>
-      <button onClick={sortAscending}>Sort Likes Ascending</button> &nbsp;&nbsp;
-      <button onClick={sortDescending}>Sort Likes Descending</button>
+      <button onClick={sortAscending}>Sort By Least Liked</button> &nbsp;&nbsp;
+      <button onClick={sortDescending}>Sort By Most Liked</button>
       <br />
       <br />
       <div
         style={{
-          padding: 8,
+          padding: 12,
           maxHeight: '500px',
           maxWidth: '1000px',
           overflowY: 'scroll',
@@ -90,15 +104,15 @@ export function ViewRecipeStats() {
         <ul style={listStyle}>
           {recipes.map((recipe) => (
             <li key={recipe.recipeId}>
-              Title: {recipe.title}
+              <b>Title:</b> {recipe.title}
               <br />
-              Author: {recipe.author}
+              <b>Author:</b> <User id={recipe.author} />
               <br />
-              Ingredient List: <pre>{recipe.ingredientList}</pre>
-              <br />
-              Total Likes: {recipe.totalLikes}
+              <b>Ingredient List:</b> <pre>{recipe.ingredientList}</pre>
+              <b>Total Likes:</b> {recipe.totalLikes}
               <br />
               <br /> Image of recipe:
+              <br />
               <br />
               <img
                 src={recipe.imageURL}
@@ -108,6 +122,7 @@ export function ViewRecipeStats() {
               />
               <br />
               <br />
+              <hr />
             </li>
           ))}
         </ul>
