@@ -68,6 +68,6 @@ Recipe.propTypes = {
   ingredientList: PropTypes.string,
   author: PropTypes.string,
   imageURL: PropTypes.string,
-  _id: PropTypes.string.isRequired,
+  _id: PropTypes.string,
   fullPost: PropTypes.bool,
 }

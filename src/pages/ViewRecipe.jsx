@@ -8,6 +8,7 @@ import { getRecipeById } from '../api/recipes.js'
 //import { getUserInfo } from '../api/users.js'
 import { useEffect, useState } from 'react'
 import { recipeTrackEvent } from '../api/events.js'
+import { RecipeStatistics } from '../components/RecipeStatistics.jsx'
 
 export function ViewRecipe({ recipeId }) {
   // Button states ===============================
@@ -78,7 +79,11 @@ export function ViewRecipe({ recipeId }) {
       <br />
       <hr />
       {recipe ? (
-        <Recipe {...recipe} fullPost />
+        <div>
+          <Recipe {...recipe} fullPost />
+          <hr />
+          <RecipeStatistics recipeId={recipeId} />
+        </div>
       ) : (
         `Recipe with id${recipeId} not found!`
       )}
