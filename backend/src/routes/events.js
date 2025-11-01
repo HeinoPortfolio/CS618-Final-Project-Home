@@ -76,7 +76,7 @@ export function eventRoutes(app) {
     }
   })
 
-  // Route to get total views of the recipe ===================================
+  // Route to get total likes of the recipe ===================================
   app.get('/api/v1/events/totalLikes/:recipeId', async (req, res) => {
     try {
       const { recipeId } = req.params

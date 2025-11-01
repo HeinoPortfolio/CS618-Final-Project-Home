@@ -32,7 +32,9 @@ export const getTotalLikes = (recipeId) =>
   ).then((res) => res.json())
 
 // Get the recipe list with information =====================================
-export const getLikesInfo = () =>
-  fetch(`${import.meta.env.VITE_BACKEND_URL}/events/likesInfo/`).then((res) =>
-    res.json(),
+export const getLikesInfo = async () => {
+  const res = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/events/likesInfo/`,
   )
+  return await res.json()
+}
