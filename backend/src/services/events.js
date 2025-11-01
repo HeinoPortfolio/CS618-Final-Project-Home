@@ -91,7 +91,6 @@ export async function getDailyDurations(recipeId) {
     },
   ])
 }
-
 // Get total likes ===============================================
 export async function getTotalLikes(recipeId) {
   return {
@@ -100,4 +99,41 @@ export async function getTotalLikes(recipeId) {
       action: 'liked',
     }),
   }
+}
+
+// Get total likes and recipe information ====================================
+export async function getLikes() {
+  return await Event.aggregate([
+    {
+      $match: { action: 'liked' },
+    },
+    {
+      $group: {
+        _id: '$recipe',
+        totalLikes: { $count: {} },
+      },
+    },
+    {
+      $sort: { totalLikes: -1 },
+    },
+    {
+      $lookup: {
+        from: 'recipes',
+        localField: '_id',
+        foreignField: '_id',
+        as: 'recipeInfo',
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        recipeId: '$_id',
+        title: '$recipeInfo.title',
+        author: '$recipeInfo.author',
+        ingredientList: '$recipeInfo.ingredientList',
+        imageURL: '$recipeInfo.imageURL',
+        Likes: '$totalLikes',
+      },
+    },
+  ])
 }

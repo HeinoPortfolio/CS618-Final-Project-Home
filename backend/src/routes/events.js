@@ -4,6 +4,7 @@ import {
   getDailyViews,
   getDailyDurations,
   getTotalLikes,
+  getLikes,
 } from '../services/events.js'
 import { getRecipeById } from '../services/recipes.js'
 
@@ -88,6 +89,17 @@ export function eventRoutes(app) {
     } catch (err) {
       console.error('Error getting stats', err)
 
+      return res.status(500).end()
+    }
+  })
+
+  // Route to get likes with recipe information ===============================
+  app.get('/api/v1/events/likesInfo/', async (req, res) => {
+    try {
+      const stats = await getLikes()
+      return res.json(stats)
+    } catch (err) {
+      console.error('Error getting stats', err)
       return res.status(500).end()
     }
   })
