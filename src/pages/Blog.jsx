@@ -10,6 +10,8 @@ import { Helmet } from 'react-helmet-async'
 
 import { useNavigate } from 'react-router-dom'
 
+import { ViewRecipeStatsComp } from '../components/ViewRecipeStatsComp.jsx'
+
 // Create the frontend of the application =====================================
 export function Blog() {
   // Create the states ========================================================
@@ -78,6 +80,7 @@ export function Blog() {
       >
         <RecipeList recipes={recipes} />
       </div>
+      <ViewRecipeStatsComp />
     </div>
   )
 }

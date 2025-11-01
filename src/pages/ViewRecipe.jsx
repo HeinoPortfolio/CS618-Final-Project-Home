@@ -6,7 +6,7 @@ import { Header } from '../components/Header.jsx'
 import { Recipe } from '../components/Recipe.jsx'
 import { getRecipeById } from '../api/recipes.js'
 //import { getUserInfo } from '../api/users.js'
-import { useEffect, useState } from 'react'
+import { /*useEffect,*/ useState } from 'react'
 import { recipeTrackEvent } from '../api/events.js'
 import { RecipeStatistics } from '../components/RecipeStatistics.jsx'
 
@@ -25,6 +25,7 @@ export function ViewRecipe({ recipeId }) {
   })
 
   // Define a hook to handle page view =================
+  /*
   useEffect(() => {
     let timeout = setTimeout(() => {
       trackEventMutation.mutate('startView')
@@ -36,6 +37,7 @@ export function ViewRecipe({ recipeId }) {
       else trackEventMutation.mutate('endView')
     }
   }, [])
+  */
 
   const navigate = useNavigate()
 
@@ -57,6 +59,9 @@ export function ViewRecipe({ recipeId }) {
 
     // Disable the button after click
     setIsButtonDisabled(true)
+
+    // Trigge the mutation ===========
+    trackEventMutation.mutate('liked')
 
     // Return back to the mainpage
     setTimeout(() => {

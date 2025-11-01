@@ -1,49 +1,10 @@
-import { Header } from '../components/Header.jsx'
-import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
-import { useState /* useEffect */ } from 'react'
+import { useState } from 'react'
 
 import { getLikesInfo } from '../api/events.js'
 import { useQuery } from '@tanstack/react-query'
-import { User } from '../components/User.jsx'
+import { User } from './User.jsx'
 
-export function ViewRecipeStats() {
-  /*const recipesStat = [
-    {
-      recipeId: 3,
-      title: 'Post 4',
-      author: 'Ava',
-      ingredientList: 'Yet Another Post3 ',
-      totalLikes: 2,
-      imageURL:
-        'https://github.com/HeinoPortfolio/images/blob/main/peach-cobbler.jpg?raw=false',
-    },
-    {
-      recipeId: 2,
-      title: 'Post 1',
-      author: 'Dave',
-      ingredientList: 'Some Post 2\nnewline',
-      totalLikes: 121,
-      imageURL:
-        'https://github.com/HeinoPortfolio/images/blob/main/fried-chicken.jpg?raw=false',
-    },
-    {
-      recipeId: 1,
-      title: 'Post 2',
-      author: 'Clark',
-      ingredientList: 'Some Post',
-      totalLikes: 6,
-    },
-    {
-      recipeId: 12,
-      title: 'Post 3',
-      author: 'Matt',
-      ingredientList: 'Another Post',
-      totalLikes: 5,
-    },
-  ]
-    */
-
+export function ViewRecipeStatsComp() {
   // Remove bullets from posts ====================
   const listStyle = {
     listStyleType: 'none',
@@ -52,11 +13,12 @@ export function ViewRecipeStats() {
   const recipeInfoQuery = useQuery({
     queryKey: ['recipes'],
     queryFn: () => getLikesInfo(),
+    enabled: true,
   })
 
   const recipesStat = recipeInfoQuery.data ?? []
 
-  console.log('Value: ', recipesStat)
+  //console.log('Value: ', recipesStat) // *******************************************
 
   // States for the sorting ===================================================
   const [recipes, setPosts] = useState(recipesStat)
@@ -80,12 +42,6 @@ export function ViewRecipeStats() {
         fontSize: 22,
       }}
     >
-      <Helmet>
-        <title>The Recipe Blog Recipe Stats</title>
-      </Helmet>
-      <Header />
-      <hr />
-      <Link to='/'>Back to main page</Link>
       <br />
       <br />
       <hr />
