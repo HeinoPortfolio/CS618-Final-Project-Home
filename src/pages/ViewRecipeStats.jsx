@@ -1,7 +1,7 @@
 import { Header } from '../components/Header.jsx'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState /* useEffect */ } from 'react'
 
 import { getLikesInfo } from '../api/events.js'
 import { useQuery } from '@tanstack/react-query'
@@ -68,7 +68,9 @@ export function ViewRecipeStats() {
     const sortedPosts = [...recipes].sort((a, b) => b.totalLikes - a.totalLikes)
     setPosts(sortedPosts)
   }
-
+  if (recipeInfoQuery.isLoading) {
+    return <div>Loading recipe stats...</div>
+  }
   return (
     <div
       style={{
